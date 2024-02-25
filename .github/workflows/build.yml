@@ -1,0 +1,49 @@
+name: Build Actions for DuinoLed
+
+on: [push, pull_request]
+
+# DuinoLed has no source files that are unottest-able
+#
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./DuinoLed
+    steps:
+
+    # Checkout the repository
+
+    - name: Checkout DuinoLed
+      uses: actions/checkout@v4
+      with:
+        path: DuinoLed
+
+    - name: Checkout DuinoMakefile
+      uses: actions/checkout@v4
+      with:
+        repository: dhylands/DuinoMakefile
+        path: DuinoMakefile
+
+    # Check that the code is styled properly
+
+    - name: Test Code Formatting
+      run: make BOARD=pico test-style
+
+    # Run the linter
+
+    - name: Install cpplint
+      run: sudo apt install cpplint
+      working-directory: .
+
+    - name: Run Linter
+      run: make BOARD=pico lint
+
+    # Check that everything is documented
+
+    - name: Install doxygen
+      run: sudo apt install doxygen graphviz
+      working-directory: .
+
+    - name: Test that docs passes
+      run: make BOARD=pico docs

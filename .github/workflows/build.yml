@@ -47,3 +47,18 @@ jobs:
 
     - name: Test that docs passes
       run: make BOARD=pico docs
+
+    # Install Arduino-CLI
+
+    - name: Install arduino-cli
+      run: mkdir ~/bin && curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/bin sh
+
+    # Ensure HeartBeatt.ino example compiles
+
+    - name: Ensure HeartBeat.ino compiles
+      run: make -C examples/Heartbeat BOARD=pico compile
+
+    # Ensure HeartBeatt_NeoPixel.ino example compiles
+
+    - name: Ensure HeartBeat_NeoPixel.ino compiles
+      run: make -C examples/Heartbeat_NeoPixel BOARD=zero compile

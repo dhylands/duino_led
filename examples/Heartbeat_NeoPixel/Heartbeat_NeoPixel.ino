@@ -11,6 +11,7 @@
  *   @file   Heartbeat.ino
  *
  *   @brief  Example using the TimedActionSequence.
+ *   @note   This example was designed to run on the Rp2040-Zero/Tiny/One.
  *
  ****************************************************************************/
 

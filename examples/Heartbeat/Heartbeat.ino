@@ -17,8 +17,7 @@
 #include <Arduino.h>
 
 #include "ArduinoLed.h"
-#include "TimedActionSequence.h"
-#include "Util.h"
+#include "DuinoUtil.h"
 
 #if !defined(LED_BUILTIN)
 #error No definition for LED_BUILTIN

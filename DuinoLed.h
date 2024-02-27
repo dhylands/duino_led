@@ -16,5 +16,4 @@
 
 #pragma once
 
-#include "src/ArduinoLed.h"
-#include "src/NeoPixelLed.h"
+#include "src/DuinoLed.h"

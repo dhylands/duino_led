@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./DuinoLed
+        working-directory: Arduino/libraries/DuinoLed
     steps:
 
     # Checkout the repository
@@ -17,48 +17,48 @@ jobs:
     - name: Checkout DuinoLed
       uses: actions/checkout@v4
       with:
-        path: DuinoLed
+        path: Arduino/libraries/DuinoLed
+
+    - name: Checkout DuinoUtil
+      uses: actions/checkout@v4
+      with:
+        repository: dhylands/DuinoUtil
+        path: Arduino/libraries/DuinoUtil
 
     - name: Checkout DuinoMakefile
       uses: actions/checkout@v4
       with:
         repository: dhylands/DuinoMakefile
-        path: DuinoMakefile
-
-    # Check that the code is styled properly
+        path: Arduino/libraries/DuinoMakefile
 
     - name: Test Code Formatting
       run: make BOARD=pico test-style
 
-    # Run the linter
-
     - name: Install cpplint
-      run: sudo apt install cpplint
+      run: sudo apt install -y cpplint
       working-directory: .
 
     - name: Run Linter
       run: make BOARD=pico lint
 
-    # Check that everything is documented
-
     - name: Install doxygen
-      run: sudo apt install doxygen graphviz
+      run: sudo apt install -y doxygen graphviz
       working-directory: .
 
     - name: Test that docs passes
       run: make BOARD=pico docs
 
-    # Install Arduino-CLI and rp2040 board support
-
     - name: Install arduino-cli and rp2040 support
       run: make BOARD=pico install-cli
 
-    # Ensure HeartBeatt.ino example compiles
+    - name: Dump arduino-cli config
+      run: ~/bin/arduino-cli config dump
+
+    - name: Install Arduino library dependencies
+      run: make BOARD=pico install-deps
 
     - name: Ensure HeartBeat.ino compiles
       run: make -C examples/Heartbeat BOARD=pico compile
-
-    # Ensure HeartBeatt_NeoPixel.ino example compiles
 
     - name: Ensure HeartBeat_NeoPixel.ino compiles
       run: make -C examples/Heartbeat_NeoPixel BOARD=zero compile

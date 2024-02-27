@@ -16,7 +16,7 @@
 
 #include <Arduino.h>
 
-#include "ArduinoLed.h"
+#include "DuinoLed.h"
 #include "DuinoUtil.h"
 
 #if !defined(LED_BUILTIN)

@@ -48,10 +48,10 @@ jobs:
     - name: Test that docs passes
       run: make BOARD=pico docs
 
-    # Install Arduino-CLI
+    # Install Arduino-CLI and rp2040 board support
 
-    - name: Install arduino-cli
-      run: mkdir ~/bin && curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/bin sh
+    - name: Install arduino-cli and rp2040 support
+      run: make BOARD=pico install-cli
 
     # Ensure HeartBeatt.ino example compiles
 

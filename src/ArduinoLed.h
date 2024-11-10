@@ -19,6 +19,24 @@
 #include <Arduino.h>
 #include "Led.h"
 
+// Normally, ArduinoCore-API/api/Common.h defines pin_size_t and PinStatus
+// But the ESP32 platformm doesn't seem to have that header and
+// esp32-hal-gpio.h #define's LOW and HIGH
+
+#if defined(LOW)
+
+#undef LOW
+#undef HIGH
+
+//! Status of a Pin
+enum PinStatus {
+  LOW     = 0,
+  HIGH    = 1,
+};
+
+using pin_size_t = uint8_t;
+#endif  // ARDUINO_ARCH_ESP32
+
 //! Class to encapsulate an LED attached to an Arduino GPIO.
 class ArduinoLed : public Led {
  public:

@@ -8,13 +8,12 @@
  *
  ****************************************************************************/
 /**
- *   @file   DuinoLed.h
+ *   @file   duino_led.ino
  *
- *   @brief  Arduino LED functions
+ *   @brief  Dummy file which allows `make vscode-settings` to work.
  *
  ****************************************************************************/
 
-#pragma once
-
-#include "ArduinoLed.h"
-#include "NeoPixelLed.h"
+#include <Arduino.h>
+void setup() {}
+void loop() {}

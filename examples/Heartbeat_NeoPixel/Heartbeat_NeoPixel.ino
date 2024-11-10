@@ -17,8 +17,10 @@
 
 #include <Arduino.h>
 
-#include "DuinoLed.h"
-#include "DuinoUtil.h"
+#define DUINOLED_USE_NEOPIXEL 1
+
+#include "duino_led.h"
+#include "duino_util.h"
 
 //! On the Waveshare RP2040-Tiny/Zero/One the LED is on GPIO 16
 #define LED_PIN 16

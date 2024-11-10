@@ -8,7 +8,7 @@
  *
  ****************************************************************************/
 /**
- *   @file   DuinoLed.h
+ *   @file   duino_led.h
  *
  *   @brief  Arduino LED functions
  *
@@ -16,4 +16,4 @@
 
 #pragma once
 
-#include "src/DuinoLed.h"
+#include "src/duino_led.h"

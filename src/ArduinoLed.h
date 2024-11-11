@@ -30,8 +30,8 @@
 
 //! Status of a Pin
 enum PinStatus {
-  LOW     = 0,
-  HIGH    = 1,
+    LOW = 0,
+    HIGH = 1,
 };
 
 using pin_size_t = uint8_t;

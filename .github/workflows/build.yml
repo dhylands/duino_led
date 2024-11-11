@@ -1,4 +1,4 @@
-name: Build Actions for DuinoLed
+name: Build Actions for duino_led
 
 on: [push, pull_request]
 
@@ -9,27 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./libraries/DuinoLed
+        working-directory: ./libraries/duino_led
     steps:
 
     # Checkout the repository
 
-    - name: Checkout DuinoLed
+    - name: Checkout duino_led
       uses: actions/checkout@v4
       with:
-        path: libraries/DuinoLed
+        path: libraries/duino_led
 
-    - name: Checkout DuinoUtil
+    - name: Checkout duino_util
       uses: actions/checkout@v4
       with:
-        repository: dhylands/DuinoUtil
-        path: libraries/DuinoUtil
+        repository: dhylands/duino_util
+        path: libraries/duino_util
 
-    - name: Checkout DuinoMakefile
+    - name: Checkout duino_makefile
       uses: actions/checkout@v4
       with:
-        repository: dhylands/DuinoMakefile
-        path: libraries/DuinoMakefile
+        repository: dhylands/duino_makefile
+        path: libraries/duino_makefile
 
     - name: Install tools
       run: make BOARD=pico install-tools

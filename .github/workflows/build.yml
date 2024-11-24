@@ -1,4 +1,4 @@
-name: Build Actions for duino_led
+name: Build duino_led
 
 on: [push, pull_request]
 

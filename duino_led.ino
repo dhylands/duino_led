@@ -17,5 +17,8 @@
 #include "duino_led.h"
 
 #include <Arduino.h>
+
+#include "duino_util.h"
+
 void setup() {}
 void loop() {}

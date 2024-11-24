@@ -17,6 +17,4 @@
 #pragma once
 
 #include "ArduinoLed.h"
-#if defined(DUINOLED_USE_NEOPIXEL)
 #include "NeoPixelLed.h"
-#endif

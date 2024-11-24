@@ -16,7 +16,7 @@
 
 #include "NeoPixelLed.h"
 
-#if defined(DUINOLED_USE_NEOPIXEL)
+#if defined(DUINO_LED_USE_NEOPIXEL)
 
 NeoPixelLed::NeoPixelLed(Adafruit_NeoPixel* strip, Led id, Color color)
     : strip{strip}, led{led}, color{color} {}
@@ -25,25 +25,10 @@ void NeoPixelLed::init() {
     this->off();
 }
 
-void NeoPixelLed::on() {
-    ColorValue currColor = this->strip->getPixelColor(this->led);
-    currColor |= this->color;
-    strip->setPixelColor(this->led, currColor);
-    strip->show();
-}
+void NeoPixelLed::on() {}
 
-void NeoPixelLed::off() {
-    ColorValue currColor = this->strip->getPixelColor(this->led);
-    currColor &= ~this->color;
-    strip->setPixelColor(this->led, currColor);
-    strip->show();
-}
+void NeoPixelLed::off() {}
 
-void NeoPixelLed::toggle() {
-    ColorValue currColor = this->strip->getPixelColor(this->led);
-    currColor ^= this->color;
-    this->strip->setPixelColor(this->led, currColor);
-    strip->show();
-}
+void NeoPixelLed::toggle() {}
 
-#endif  // DUINOLED_USE_NEOPIXEL
+#endif  // DUINO_LED_USE_NEOPIXEL

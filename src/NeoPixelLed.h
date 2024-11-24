@@ -16,7 +16,7 @@
 
 #pragma once
 
-#if defined(DUINOLED_USE_NEOPIXEL)
+#if defined(DUINO_LED_USE_NEOPIXEL)
 
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
@@ -43,19 +43,35 @@ class NeoPixelLed : public Led {
         Adafruit_NeoPixel* strip,  //!< NeoPixel Strip containing the LED
         Led id,                    //!< Number of the LED within the strip.
         Color color                //!< Color to assign to this LED.
-    );
+        )
+        : strip{strip}, led{led}, color{color} {}
 
     //! Initializes the pin to be an output.
-    void init();
+    void init() { this->off(); }
 
     //! Turns the LED on.
-    void on() override;
+    void on() override {
+        ColorValue currColor = this->strip->getPixelColor(this->led);
+        currColor |= this->color;
+        strip->setPixelColor(this->led, currColor);
+        strip->show();
+    }
 
     //! Turns the LED off.
-    void off() override;
+    void off() override {
+        ColorValue currColor = this->strip->getPixelColor(this->led);
+        currColor &= ~this->color;
+        strip->setPixelColor(this->led, currColor);
+        strip->show();
+    }
 
     //! Toggles the state of the LED.
-    void toggle() override;
+    void toggle() override {
+        ColorValue currColor = this->strip->getPixelColor(this->led);
+        currColor ^= this->color;
+        this->strip->setPixelColor(this->led, currColor);
+        strip->show();
+    }
 
  private:
     Adafruit_NeoPixel* strip;  //!< NeoPixel Strip containing the LED
@@ -63,4 +79,4 @@ class NeoPixelLed : public Led {
     Color color;               //!< Color to assign to this LED.
 };
 
-#endif  // DUINOLED_USE_NEOPIXEL
+#endif  // DUINO_LED_USE_NEOPIXEL

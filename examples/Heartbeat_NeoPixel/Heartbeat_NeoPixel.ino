@@ -17,7 +17,7 @@
 
 #include <Arduino.h>
 
-#define DUINOLED_USE_NEOPIXEL 1
+#define DUINO_LED_USE_NEOPIXEL 1
 
 #include "duino_led.h"
 #include "duino_util.h"

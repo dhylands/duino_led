@@ -16,6 +16,8 @@
 
 #pragma once
 
+#if defined(DUINOLED_USE_NEOPIXEL)
+
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
 #include "Led.h"
@@ -60,3 +62,5 @@ class NeoPixelLed : public Led {
     Led led;                   //!< Number of the LED within the strip.
     Color color;               //!< Color to assign to this LED.
 };
+
+#endif  // DUINOLED_USE_NEOPIXEL

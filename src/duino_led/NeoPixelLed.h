@@ -20,7 +20,7 @@
 
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
-#include "Led.h"
+#include "duino_led/Led.h"
 
 //! Implements an LED using a NeoPixel.
 //! @details Allows each of the primary colors (red, green, blue) of a neopixel

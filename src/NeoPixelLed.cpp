@@ -14,7 +14,7 @@
  *
  ****************************************************************************/
 
-#include "NeoPixelLed.h"
+#include "duino_led/NeoPixelLed.h"
 
 #if defined(DUINO_LED_USE_NEOPIXEL)
 

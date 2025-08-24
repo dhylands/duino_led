@@ -14,7 +14,7 @@
  *
  ****************************************************************************/
 
-#include "ArduinoLed.h"
+#include "duino_led/ArduinoLed.h"
 
 ArduinoLed::ArduinoLed(pin_size_t pin, Active active)
     : pin{pin},

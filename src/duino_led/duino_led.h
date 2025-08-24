@@ -16,4 +16,5 @@
 
 #pragma once
 
-#include "duino_led/duino_led.h"
+#include "duino_led/ArduinoLed.h"
+#include "duino_led/NeoPixelLed.h"

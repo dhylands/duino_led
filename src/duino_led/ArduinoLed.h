@@ -17,7 +17,7 @@
 #pragma once
 
 #include <Arduino.h>
-#include "Led.h"
+#include "duino_led/Led.h"
 
 // Normally, ArduinoCore-API/api/Common.h defines pin_size_t and PinStatus
 // But the ESP32 platformm doesn't seem to have that header and

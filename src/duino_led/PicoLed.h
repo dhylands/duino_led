@@ -48,7 +48,17 @@ class PicoLed : public Led {
     void toggle() override;
 
  private:
-    uint pin;      //!< This is the pin hooked up to the LED
-    bool on_val;   //!< This value turns the LED on
-    bool off_val;  //!< This value turns the LED off
+    uint m_pin;                  //!< This is the pin hooked up to the LED
+    bool m_initialized = false;  //!< has this pin been initialized?
+    bool m_on_val;               //!< This value turns the LED on
+    bool m_off_val;              //!< This value turns the LED off
 };
+
+//! Initializes the debug LEDs.
+void debugLedInit();
+
+//! Function for turning a debug LED on/off
+void debugLed(
+    uint num,  //!< [in] Debug LED number (starts at zero)
+    bool on    //!< [in] true = turn LED on, false = turn LED off
+);

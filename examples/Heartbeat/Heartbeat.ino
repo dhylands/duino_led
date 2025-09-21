@@ -26,10 +26,10 @@
 static ArduinoLed led{LED_BUILTIN, ArduinoLed::Active::HIGH};
 
 static TimedActionSequence::Action heartbeat_list[] = {
-    {std::bind(&Led::toggle, led), 100},
-    {std::bind(&Led::toggle, led), 100},
-    {std::bind(&Led::toggle, led), 100},
-    {std::bind(&Led::toggle, led), 700},
+    {std::bind(&Led::toggle, &led), 100},
+    {std::bind(&Led::toggle, &led), 100},
+    {std::bind(&Led::toggle, &led), 100},
+    {std::bind(&Led::toggle, &led), 700},
 };
 static TimedActionSequence heartbeat{heartbeat_list, LEN(heartbeat_list)};
 

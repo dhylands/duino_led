@@ -33,17 +33,19 @@ static Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_RGB + NEO_KHZ800);
 static NeoPixelLed red(&strip, 0, NeoPixelLed::Color::RED);
 static NeoPixelLed green(&strip, 0, NeoPixelLed::Color::GREEN);
 
+// NOTE: std::bind copies arguments by value, so be sure to pass in a pointer
+//       rather than an object.
 static TimedActionSequence::Action heartbeat_list[] = {
-    {std::bind(&Led::toggle, red), 100},
-    {std::bind(&Led::toggle, red), 100},
-    {std::bind(&Led::toggle, red), 100},
-    {std::bind(&Led::toggle, red), 700},
+    {std::bind(&Led::toggle, &red), 100},
+    {std::bind(&Led::toggle, &red), 100},
+    {std::bind(&Led::toggle, &red), 100},
+    {std::bind(&Led::toggle, &red), 700},
 };
 static TimedActionSequence heartbeat{heartbeat_list, LEN(heartbeat_list)};
 
 static TimedActionSequence::Action activity_list[] = {
-    {std::bind(&Led::toggle, green), 20},
-    {std::bind(&Led::toggle, green), 20},
+    {std::bind(&Led::toggle, &green), 20},
+    {std::bind(&Led::toggle, &green), 20},
 };
 static TimedActionSequence activity{
     activity_list, LEN(activity_list), TimedActionSequence::Mode::ONE_SHOT};
